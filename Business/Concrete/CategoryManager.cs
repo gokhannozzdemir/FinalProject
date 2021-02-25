@@ -1,7 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -13,34 +12,21 @@ namespace Business.Concrete
     {
         ICategoryDal _categoryDal;
 
-       
 
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
         }
 
-  
-        public List<Category> GetAll()
-        {   //buraya is kodlarimi yazarim ben 
-            
-            return _categoryDal.GetAll();
 
+        public IDataResult<List<Category>> GetAll()
+        {
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
         }
 
-        public Category GetById(int categoryId)
+        public IDataResult<Category> GetById(int categoryId)
         {
-            return _categoryDal.Get(c => c.CategoryId == categoryId);
-        }
-
-        IDataResult<List<Category>> ICategoryService.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        IDataResult<List<Category>> ICategoryService.GetById(int categoryId)
-        {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.CategoryId == categoryId));
         }
     }
 }

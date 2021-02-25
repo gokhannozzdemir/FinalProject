@@ -8,6 +8,7 @@ namespace Core.Utilities.Results
 
     {
         private List<global::Entities.Concrete.Product> maintenanceTime;
+        private List<global::Entities.DTOs.ProductDetailDto> maintenanceTime1;
 
         public ErrorDataResult(T data, string message) : base(data, false, message)
         {
@@ -34,6 +35,11 @@ namespace Core.Utilities.Results
         public ErrorDataResult(List<global::Entities.Concrete.Product> maintenanceTime)
         {
             this.maintenanceTime = maintenanceTime;
+        }
+
+        public ErrorDataResult(List<global::Entities.DTOs.ProductDetailDto> maintenanceTime1)
+        {
+            this.maintenanceTime1 = maintenanceTime1;
         }
     }
 

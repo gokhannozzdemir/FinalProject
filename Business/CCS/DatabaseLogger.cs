@@ -6,7 +6,7 @@ namespace Business.CCS
     {
         public void Log()
         {
-            Console.WriteLine("Dosyaya loglandi");
+            Console.WriteLine("Veritabanina loglandi");
         }
     }
 }
